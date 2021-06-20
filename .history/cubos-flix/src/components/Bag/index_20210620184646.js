@@ -13,8 +13,7 @@ import PriceButton from '../PrinceButton/index';
 /* ---------------------- APPLICATION ----------------------- */
 function Bag({ moviesInBag, finalPrice, addMovie, removeMovie }) {
 
-    // ---  bag size conditional variable (bolean)
-    const bagEmpty = moviesInBag.length > 0;
+    const bag_empty = moviesInBag.length > 0;
 
     return (
         <div className='bag-container'>
@@ -23,11 +22,11 @@ function Bag({ moviesInBag, finalPrice, addMovie, removeMovie }) {
                 <h1>Sacola</h1>
             </header>
             <div className='bag-content'>
-                {bagEmpty ?
+                {bag_empty ?
                     (
-                        moviesInBag.map(({ title, cover, price, count }) => (
+                        moviesInBag.map(({ title, backgroundImg, price, count }) => (
                             <div className='movie-bag'>
-                                <img className='img-movie-bag' src={cover} alt={title} />
+                                <img className='img-movie-bag' src={process.env.PUBLIC_URL + backgroundImg} alt={title} />
                                 <div className='info-bag'>
                                     <span >{title}</span>
                                     <span >R$ {price.toString().replace('.', ',')}</span>
@@ -43,13 +42,13 @@ function Bag({ moviesInBag, finalPrice, addMovie, removeMovie }) {
                     :
                     (
                         <empty>
-                            <h2>Sua sacola está vazia</h2>
+                            <h3>Sua sacola está vazia</h3>
                             <h5>Adicione filmes agora</h5>
                             <PersonIllustration />
                         </empty>
                     )
                 }
-                {bagEmpty ? <PriceButton className='bag-button' text="Confirme seus dados" type="bag" price={finalPrice} /> : ''}
+                {bag_empty ? <PriceButton className='bag-button' text="Confirme seus dados" type="bag" price={finalPrice} /> : ''}
             </div>
         </div>
     );

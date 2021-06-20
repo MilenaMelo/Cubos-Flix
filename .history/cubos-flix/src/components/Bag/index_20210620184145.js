@@ -13,8 +13,7 @@ import PriceButton from '../PrinceButton/index';
 /* ---------------------- APPLICATION ----------------------- */
 function Bag({ moviesInBag, finalPrice, addMovie, removeMovie }) {
 
-    // ---  bag size conditional variable (bolean)
-    const bagEmpty = moviesInBag.length > 0;
+    const basketNotEmpty = moviesInBag.length > 0;
 
     return (
         <div className='bag-container'>
@@ -23,11 +22,11 @@ function Bag({ moviesInBag, finalPrice, addMovie, removeMovie }) {
                 <h1>Sacola</h1>
             </header>
             <div className='bag-content'>
-                {bagEmpty ?
+                {basketNotEmpty ?
                     (
-                        moviesInBag.map(({ title, cover, price, count }) => (
+                        moviesInBag.map(({ title, backgroundImg, price, count }) => (
                             <div className='movie-bag'>
-                                <img className='img-movie-bag' src={cover} alt={title} />
+                                <img className='img-movie-bag' src={process.env.PUBLIC_URL + backgroundImg} alt={title} />
                                 <div className='info-bag'>
                                     <span >{title}</span>
                                     <span >R$ {price.toString().replace('.', ',')}</span>
@@ -40,16 +39,15 @@ function Bag({ moviesInBag, finalPrice, addMovie, removeMovie }) {
                             </div>
                         ))
                     )
-                    :
-                    (
+                    : (
                         <empty>
                             <h2>Sua sacola está vazia</h2>
-                            <h5>Adicione filmes agora</h5>
+                            <h3>Adicione filmes agora</h3>
                             <PersonIllustration />
                         </empty>
                     )
                 }
-                {bagEmpty ? <PriceButton className='bag-button' text="Confirme seus dados" type="bag" price={finalPrice} /> : ''}
+                {basketNotEmpty ? <PriceButton className='bag-button' text="Confirme seus dados" type="bag" price={finalPrice} /> : ''}
             </div>
         </div>
     );

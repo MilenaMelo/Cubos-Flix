@@ -1,25 +1,25 @@
 /* ---------------------- IMPORTS --------------------------- */
+
 import React, { useState, useEffect } from "react";
 
-// --- import pages
+/* ----------- IMPORT PAGES ----------- */
 import './App.css';
 import Navbar from './components/Navbar';
 import Cards from './components/Cards';
 import Bag from './components/Bag';
 
-// --- import data
+/* ----------- IMPORT VARIABLES ----------- */
 import defaultMovies from './data/data.js';
 
 
 /* ---------------------- APPLICATION ----------------------- */
+
 function App() {
   // --- states
   const [movies, setMovies] = useState(defaultMovies);
   const [moviesFilter, setMoviesFilter] = useState("");
   const [moviesInBag, setMoviesInBag] = useState([]);
   const [finalPrice, setFinalPrice] = useState(0);
-
-  // --------------------------------------------- main functions
 
   // --- import API
   useEffect(() => {
@@ -43,72 +43,63 @@ function App() {
     }
   }
 
-  // ------ manage prices in bag 
-
+  function getDiscountedPrice(price) {
+    return Number(price.toFixed(2));
+  }
 
   function sendPurchase(movie) {
-    // stored movies
     const newMovies = [...moviesInBag];
-    const storedMovies = newMovies.find(
+    const movieInBasket = newMovies.find(
       ({ title }) => title === movie.title,
     );
 
-    if (storedMovies) {
-      storedMovies.count++;
+    if (movieInBasket) {
+      movieInBasket.count++;
       setMoviesInBag(newMovies);
-      const newPrice = roundPrice(
-        storedMovies.price + finalPrice,
+      const newPrice = getDiscountedPrice(
+        movieInBasket.price + finalPrice,
       );
       setFinalPrice(newPrice);
       return;
     }
 
-    // new movies
     newMovies.push({
       title: movie.title,
-      cover: movie.poster_path,
+      backgroundImg: movie.poster_path,
       price: movie.price,
       count: 1,
     });
     setMoviesInBag(newMovies);
-    const newPrice = roundPrice(movie.price + finalPrice);
+    const newPrice = getDiscountedPrice(movie.price + finalPrice);
     setFinalPrice(newPrice);
   }
 
-  function addMovie(movieTitle) {
-    // stored movies
+  function handleMovieAdd(movieTitle) {
     const newMovies = [...moviesInBag];
-    const storedMovies = newMovies.find(
+    const movieInBasket = newMovies.find(
       ({ title }) => title === movieTitle,
     );
 
-    // add movies
-    storedMovies.count++;
+    movieInBasket.count++;
     setMoviesInBag(newMovies);
-
-    // raise price
-    const newPrice = roundPrice(
-      storedMovies.price + finalPrice,
+    const newPrice = getDiscountedPrice(
+      movieInBasket.price + finalPrice,
     );
     setFinalPrice(newPrice);
   }
 
-  function removeMovie(movieTitle) {
-    // stored movies
+  function handleMovieRemoval(movieTitle) {
     const newMovies = [...moviesInBag];
-    const storedMovies = newMovies.find(
+    const movieInBasket = newMovies.find(
       ({ title }) => title === movieTitle,
     );
-
-    // decrease price
-    const newPrice = roundPrice(
-      finalPrice - storedMovies.price,
+    const newPrice = getDiscountedPrice(
+      finalPrice - movieInBasket.price,
     );
     setFinalPrice(newPrice);
 
-    // remove movies
-    storedMovies.count--;
-    if (storedMovies.count === 0) {
+    movieInBasket.count--;
+    if (movieInBasket.count === 0) {
       setMoviesInBag(
         newMovies.filter(({ title }) => title !== movieTitle),
       );
@@ -118,15 +109,7 @@ function App() {
     setMoviesInBag(newMovies);
   }
 
-  //* ----------------------------------------- auxiliary functions
-  /*
-  --- manage prices 
-  */
-  function roundPrice(price) {
-    return Number(price.toFixed(2));
-  }
 
-  // ------------------------------------------ main page JSX
   return (
     <div className='App'>
       <header className='header'>
@@ -152,10 +135,10 @@ function App() {
       </section>
       <section className='side-content'>
         <Bag className="bag-button"
-          moviesInBag={moviesInBag}
-          addMovie={addMovie}
-          removeMovie={removeMovie}
+          moviesInBasket={moviesInBag}
           finalPrice={finalPrice}
+          handleMovieAdd={handleMovieAdd}
+          handleMovieRemoval={handleMovieRemoval}
         />
       </section>
     </div>

@@ -14,7 +14,7 @@ import PriceButton from '../PrinceButton/index';
 function Bag({ moviesInBag, finalPrice, addMovie, removeMovie }) {
 
     // ---  bag size conditional variable (bolean)
-    const bagEmpty = moviesInBag.length > 0;
+    const bag_empty = moviesInBag.length > 0;
 
     return (
         <div className='bag-container'>
@@ -23,7 +23,7 @@ function Bag({ moviesInBag, finalPrice, addMovie, removeMovie }) {
                 <h1>Sacola</h1>
             </header>
             <div className='bag-content'>
-                {bagEmpty ?
+                {bag_empty ?
                     (
                         moviesInBag.map(({ title, cover, price, count }) => (
                             <div className='movie-bag'>
@@ -49,7 +49,7 @@ function Bag({ moviesInBag, finalPrice, addMovie, removeMovie }) {
                         </empty>
                     )
                 }
-                {bagEmpty ? <PriceButton className='bag-button' text="Confirme seus dados" type="bag" price={finalPrice} /> : ''}
+                {bag_empty ? <PriceButton className='bag-button' text="Confirme seus dados" type="bag" price={finalPrice} /> : ''}
             </div>
         </div>
     );

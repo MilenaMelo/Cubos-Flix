@@ -9,7 +9,7 @@ function PriceButton({ onClickHandler, text, price }) {
     return (
         <button className='button-movie' onClick={onClickHandler}>
             <empty>{text}</empty>
-            <span className="price">R$ {price.toString().replace('.', ',')}</span>
+            <span className="price">R$ {price.replace('.', ',')}</span>
         </button>
     );
 }

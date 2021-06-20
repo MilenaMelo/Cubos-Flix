@@ -85,8 +85,6 @@ function App() {
     // add movies
     storedMovies.count++;
     setMoviesInBag(newMovies);
-
-    // raise price
     const newPrice = roundPrice(
       storedMovies.price + finalPrice,
     );

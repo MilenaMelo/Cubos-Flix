@@ -19,8 +19,6 @@ function App() {
   const [moviesInBag, setMoviesInBag] = useState([]);
   const [finalPrice, setFinalPrice] = useState(0);
 
-  // --------------------------------------------- main functions
-
   // --- import API
   useEffect(() => {
     async function carregarFilmes() {
@@ -43,30 +41,30 @@ function App() {
     }
   }
 
-  // ------ manage prices in bag 
-
+  // --- manage prices
+  function roundPrice(price) {
+    return Number(price.toFixed(2));
+  }
 
   function sendPurchase(movie) {
-    // stored movies
     const newMovies = [...moviesInBag];
-    const storedMovies = newMovies.find(
+    const movieInBasket = newMovies.find(
       ({ title }) => title === movie.title,
     );
 
-    if (storedMovies) {
-      storedMovies.count++;
+    if (movieInBasket) {
+      movieInBasket.count++;
       setMoviesInBag(newMovies);
       const newPrice = roundPrice(
-        storedMovies.price + finalPrice,
+        movieInBasket.price + finalPrice,
       );
       setFinalPrice(newPrice);
       return;
     }
 
-    // new movies
     newMovies.push({
       title: movie.title,
-      cover: movie.poster_path,
+      backgroundImg: movie.poster_path,
       price: movie.price,
       count: 1,
     });
@@ -76,39 +74,31 @@ function App() {
   }
 
   function addMovie(movieTitle) {
-    // stored movies
     const newMovies = [...moviesInBag];
-    const storedMovies = newMovies.find(
+    const movieInBasket = newMovies.find(
       ({ title }) => title === movieTitle,
     );
 
-    // add movies
-    storedMovies.count++;
+    movieInBasket.count++;
     setMoviesInBag(newMovies);
-
-    // raise price
     const newPrice = roundPrice(
-      storedMovies.price + finalPrice,
+      movieInBasket.price + finalPrice,
     );
     setFinalPrice(newPrice);
   }
 
   function removeMovie(movieTitle) {
-    // stored movies
     const newMovies = [...moviesInBag];
-    const storedMovies = newMovies.find(
+    const movieInBasket = newMovies.find(
       ({ title }) => title === movieTitle,
     );
-
-    // decrease price
     const newPrice = roundPrice(
-      finalPrice - storedMovies.price,
+      finalPrice - movieInBasket.price,
     );
     setFinalPrice(newPrice);
 
-    // remove movies
-    storedMovies.count--;
-    if (storedMovies.count === 0) {
+    movieInBasket.count--;
+    if (movieInBasket.count === 0) {
       setMoviesInBag(
         newMovies.filter(({ title }) => title !== movieTitle),
       );
@@ -118,15 +108,7 @@ function App() {
     setMoviesInBag(newMovies);
   }
 
-  //* ----------------------------------------- auxiliary functions
-  /*
-  --- manage prices 
-  */
-  function roundPrice(price) {
-    return Number(price.toFixed(2));
-  }
 
-  // ------------------------------------------ main page JSX
   return (
     <div className='App'>
       <header className='header'>
@@ -152,10 +134,10 @@ function App() {
       </section>
       <section className='side-content'>
         <Bag className="bag-button"
-          moviesInBag={moviesInBag}
-          addMovie={addMovie}
-          removeMovie={removeMovie}
+          moviesInBasket={moviesInBag}
           finalPrice={finalPrice}
+          handleMovieAdd={addMovie}
+          handleMovieRemoval={removeMovie}
         />
       </section>
     </div>

@@ -7,18 +7,17 @@ import search_icon from '../../assets/images/search-icon.svg'
 
 /* ---------------------- APPLICATION ----------------------- */
 function SearchInput({ setMoviesNameFilter }) {
-  const [searchName, setSearchName] = useState('');
+  const [search, setSearch] = useState('');
 
-  // --- get value
-  function keyPress(state) {
-    if (state.key !== 'Enter') return;
+  function keyPress(e) {
+    if (e.key !== 'Enter') return;
 
-    setMoviesNameFilter(searchName);
+    setMoviesNameFilter(search);
   }
 
   return (
     <div className="search-container">
-      <input className='search-input' type="text" placeholder="Pesquise filmes..." onChange={event => setSearchName(event.target.value)} onKeyPress={event => keyPress(event)} />
+      <input className='search-input' type="text" name="Pesquisa" placeholder="Pesquise filmes..." onChange={e => setSearch(e.target.value)} onKeyPress={e => keyPress(e)} />
       <img className='search-img' src={search_icon} alt="Input de pesquisa" />
     </div>
   );

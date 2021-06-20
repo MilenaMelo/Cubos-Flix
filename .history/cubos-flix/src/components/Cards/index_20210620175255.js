@@ -1,15 +1,10 @@
-/* ---------------------- IMPORTS --------------------------- */
-// --- import pages
 import './styles.css'
-import card_movie from '../../assets/images/golden-star.svg'
 import PriceButton from '../PrinceButton/index';
+import card_movie from '../../assets/images/golden-star.svg'
 
-
-/* ---------------------- APPLICATION ----------------------- */
 function Card({ title, vote_average, price, poster_path, sendPurchase }) {
 
-    // --- background variable
-    const background = "linear-gradient(rgba(0, 0, 0, 0.3) 100%, rgba(0, 0, 0, 0.3)100%), url('" + poster_path + "') no-repeat center / cover";
+    const background = 'linear-gradient(rgba(0, 0, 0, 0.3) 100%, rgba(0, 0, 0, 0.3)100%), url('" + poster_path + "') no-repeat center / cover';
 
     return (
         <div className='card-container'>
@@ -18,10 +13,10 @@ function Card({ title, vote_average, price, poster_path, sendPurchase }) {
                     <h5 title={title} className='name-movie'>{title}</h5>
                     <div className='pointing-movie'>
                         <img src={card_movie} alt='Ícone de estrela' />
-                        <span>{vote_average}</span>
+                        <span>{ vote_average }</span>
                     </div>
                 </div>
-                <PriceButton text='Sacola' type='movie' price={price} onClickHandler={() => sendPurchase({ title, poster_path, price })} />
+                <PriceButton text="Sacola" type="movie" price={price} onClickHandler={() => sendPurchase({ title, poster_path, price })} />
             </div>
         </div>
     );

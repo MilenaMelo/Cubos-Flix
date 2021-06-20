@@ -85,8 +85,6 @@ function App() {
     // add movies
     storedMovies.count++;
     setMoviesInBag(newMovies);
-
-    // raise price
     const newPrice = roundPrice(
       storedMovies.price + finalPrice,
     );
@@ -94,13 +92,10 @@ function App() {
   }
 
   function removeMovie(movieTitle) {
-    // stored movies
     const newMovies = [...moviesInBag];
     const storedMovies = newMovies.find(
       ({ title }) => title === movieTitle,
     );
-
-    // decrease price
     const newPrice = roundPrice(
       finalPrice - storedMovies.price,
     );

@@ -44,10 +44,7 @@ function App() {
   }
 
   // ------ manage prices in bag 
-
-
   function sendPurchase(movie) {
-    // stored movies
     const newMovies = [...moviesInBag];
     const storedMovies = newMovies.find(
       ({ title }) => title === movie.title,
@@ -63,7 +60,6 @@ function App() {
       return;
     }
 
-    // new movies
     newMovies.push({
       title: movie.title,
       cover: movie.poster_path,
@@ -76,17 +72,13 @@ function App() {
   }
 
   function addMovie(movieTitle) {
-    // stored movies
     const newMovies = [...moviesInBag];
     const storedMovies = newMovies.find(
       ({ title }) => title === movieTitle,
     );
 
-    // add movies
     storedMovies.count++;
     setMoviesInBag(newMovies);
-
-    // raise price
     const newPrice = roundPrice(
       storedMovies.price + finalPrice,
     );
@@ -94,19 +86,15 @@ function App() {
   }
 
   function removeMovie(movieTitle) {
-    // stored movies
     const newMovies = [...moviesInBag];
     const storedMovies = newMovies.find(
       ({ title }) => title === movieTitle,
     );
-
-    // decrease price
     const newPrice = roundPrice(
       finalPrice - storedMovies.price,
     );
     setFinalPrice(newPrice);
 
-    // remove movies
     storedMovies.count--;
     if (storedMovies.count === 0) {
       setMoviesInBag(
@@ -120,7 +108,7 @@ function App() {
 
   //* ----------------------------------------- auxiliary functions
   /*
-  --- manage prices 
+  --- manage prices in bag 
   */
   function roundPrice(price) {
     return Number(price.toFixed(2));
@@ -153,9 +141,9 @@ function App() {
       <section className='side-content'>
         <Bag className="bag-button"
           moviesInBag={moviesInBag}
+          finalPrice={finalPrice}
           addMovie={addMovie}
           removeMovie={removeMovie}
-          finalPrice={finalPrice}
         />
       </section>
     </div>

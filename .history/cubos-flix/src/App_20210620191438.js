@@ -47,7 +47,6 @@ function App() {
 
 
   function sendPurchase(movie) {
-    // stored movies
     const newMovies = [...moviesInBag];
     const storedMovies = newMovies.find(
       ({ title }) => title === movie.title,
@@ -63,7 +62,6 @@ function App() {
       return;
     }
 
-    // new movies
     newMovies.push({
       title: movie.title,
       cover: movie.poster_path,
@@ -76,17 +74,13 @@ function App() {
   }
 
   function addMovie(movieTitle) {
-    // stored movies
     const newMovies = [...moviesInBag];
     const storedMovies = newMovies.find(
       ({ title }) => title === movieTitle,
     );
 
-    // add movies
     storedMovies.count++;
     setMoviesInBag(newMovies);
-
-    // raise price
     const newPrice = roundPrice(
       storedMovies.price + finalPrice,
     );
@@ -94,19 +88,15 @@ function App() {
   }
 
   function removeMovie(movieTitle) {
-    // stored movies
     const newMovies = [...moviesInBag];
     const storedMovies = newMovies.find(
       ({ title }) => title === movieTitle,
     );
-
-    // decrease price
     const newPrice = roundPrice(
       finalPrice - storedMovies.price,
     );
     setFinalPrice(newPrice);
 
-    // remove movies
     storedMovies.count--;
     if (storedMovies.count === 0) {
       setMoviesInBag(

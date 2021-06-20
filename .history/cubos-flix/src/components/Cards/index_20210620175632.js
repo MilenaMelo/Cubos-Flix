@@ -18,7 +18,7 @@ function Card({ title, vote_average, price, poster_path, sendPurchase }) {
                     <h5 title={title} className='name-movie'>{title}</h5>
                     <div className='pointing-movie'>
                         <img src={card_movie} alt='Ícone de estrela' />
-                        <span>{vote_average}</span>
+                        <span>{ vote_average }</span>
                     </div>
                 </div>
                 <PriceButton text='Sacola' type='movie' price={price} onClickHandler={() => sendPurchase({ title, poster_path, price })} />
