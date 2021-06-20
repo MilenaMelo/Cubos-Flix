@@ -1,0 +1,18 @@
+/* ----------- BAG ----------- */
+
+.bag-container {
+    width: 312px;
+    height: 429px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.bag-header {
+    width: 312px;
+    height: 429px;
+    display: flex;
+    background: #A785ED;
+}

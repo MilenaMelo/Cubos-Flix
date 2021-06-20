@@ -1,0 +1,30 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 24px 100px 24px 70px;
+    color: #fdfdfd;
+    background: #0f1c26;
+}
+
+.search-container {
+    width: 70%;
+    padding: 14px 16px;
+}
+
+.search-container, .search-input {
+    outline: 0;
+    background: #171b1e;
+    border: 1px solid transparent;
+}
+
+.search-img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    position: absolute;
+}
+
+.profile-img {
+    height: 56px;
+}

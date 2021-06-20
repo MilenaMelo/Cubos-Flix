@@ -1,0 +1,39 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 24px 100px 24px 70px;
+    color: #fdfdfd;
+    background: #0f1c26;
+}
+
+.search-container {
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    margin-right: 92px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 16px 14px;
+    outline: 0;
+    border: 1px solid transparent;
+    background: #171b1e;
+    color: #fff;
+}
+
+.search-img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    align-self: center;
+    position: absolute;
+    z-index: 1;
+    right: 15px;
+
+}
+
+.profile-img {
+    height: 56px;
+}

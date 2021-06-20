@@ -1,0 +1,10 @@
+.navbar {
+    height: 105px;
+    display: flex;
+    color: white;
+    background-color: #0F1C26;
+}
+
+.profile-img {
+    height: 56px;
+}

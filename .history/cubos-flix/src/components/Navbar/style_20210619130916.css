@@ -1,0 +1,18 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0f1c26;
+}
+
+.search-input {
+    width: 70%;
+    outline: 0;
+    background: #171b1e;
+    border: 1px solid transparent;
+}
+
+
+.profile-img {
+    height: 56px;
+}

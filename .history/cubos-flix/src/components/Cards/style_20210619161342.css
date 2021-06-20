@@ -1,0 +1,10 @@
+/* ----------- CARD ----------- */
+
+.card-container {
+    height: 300px;
+    padding: 12px 8px 6px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 40%);
+    border-radius: 10px;
+}

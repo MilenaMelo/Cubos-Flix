@@ -1,0 +1,24 @@
+.navbar {
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 70px;
+    background-color: #0f1c26;
+}
+
+.search-container {
+    padding: 14px 16px;
+    width:fit-content
+}
+
+.search-container, .search-input {
+    outline: 0;
+    background: #171b1e;
+    border: 1px solid transparent;
+}
+
+
+.profile-img {
+    height: 56px;
+}

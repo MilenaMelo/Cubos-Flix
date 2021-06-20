@@ -1,0 +1,26 @@
+/* ----------- CARD ----------- */
+
+.movie-card {
+    width: 168px;
+    height: 300px;
+    padding: 12px 8px 6px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 40%);
+    border-radius: 10px;
+    background: linear-gradient(rgba(0, 0, 0, 0.3) 100%, rgba(0, 0, 0, 0.3) 100%), url(https://image.tmdb.org/t/p/original/5ghvx0Q5c57JoBNxFj4gSfXj6wK.jpg) center center / cover no-repeat;
+}
+
+.card-container:hover {
+    scale: 2;
+    transition: .5s;
+}
+
+/* ----------- CARD INFO ----------- */
+
+.info-card {
+    display: flex;
+    margin-top: auto;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}

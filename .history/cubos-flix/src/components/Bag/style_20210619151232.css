@@ -1,0 +1,8 @@
+/* ----------- BAG ----------- */
+
+.bag-container {
+    width: 312px;
+    height: 429px;
+    display: flex;
+    background: #3F3F3F;
+}

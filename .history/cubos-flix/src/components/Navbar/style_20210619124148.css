@@ -1,0 +1,11 @@
+.navbar {
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #0f1c26;
+}
+
+.profile-img {
+    height: 56px;
+}

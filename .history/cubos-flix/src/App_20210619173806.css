@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
+/* ----------- SCREEN ----------- */
+* {
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+    color: #FFFFFF;
+}
+
+/* ----------- APPLICATION ----------- */
+
+.app {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas: 'header header'
+                         'content side-content';
+    grid-gap: 24px 50px;
+    background-color: #1D2226;
+}
+
+.header {
+    grid-area: header;
+}
+
+.content {
+    grid-area: content;
+}
+
+.side-content {
+    grid-area: side-content;
+}
+
+/* ----------- MAIN CONTENT ----------- */
+
+.content {
+    padding-left: 96px;
+}
+
+.top-movies, .all-movies {
+    margin-bottom: 40px;
+}
+
+.top-movies h1 {
+    margin-bottom: 16px;
+}
+
+.movie-grid {
+    max-width: 940px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,168px);
+    gap: 24px;
+}
+
+
+/* ----------- SIDE CONTENT ----------- */
+
+.side-content {
+    position: sticky;
+}

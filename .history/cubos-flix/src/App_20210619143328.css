@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
+/* ----------- SCREEN ----------- */
+* {
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+    color: #FFFFFF;
+}
+
+/* ----------- APPLICATION ----------- */
+
+.app {
+    width: 100vh;
+    background-color: #1D2226;
+}

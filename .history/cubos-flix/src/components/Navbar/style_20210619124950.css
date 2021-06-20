@@ -1,0 +1,12 @@
+.navbar {
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 70px;
+    background-color: #0f1c26;
+}
+
+.profile-img {
+    height: 56px;
+}
