@@ -81,15 +81,14 @@
     margin-left: auto;
 }
 
-.actions-bag svg {
+svg {
     border-radius: 50px;
 }
 
-.actions-bag svg:active {
+svg:active {
     background: #BFBFBF;
 }
 
-.actions-bag svg:hover {
+svg:hover {
     background: #6B6B6B;
-    cursor: pointer;
 }

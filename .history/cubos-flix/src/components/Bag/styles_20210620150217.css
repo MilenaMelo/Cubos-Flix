@@ -2,22 +2,9 @@
 
 .bag-container {
     width: 312px;
-    height: 600px;
     position: sticky;
-    top: 50px;
-    overflow-y: auto;
+    top: 168px;
 }
-
-.bag-container::-webkit-scrollbar {
-    width: 7px;
-}
-
-.bag-container::-webkit-scrollbar-thumb {
-    background: #A785ED;
-    border-radius: 5px;
-    height: 5px;
-}
-
 
 /* ----------- BAG-HEADER ----------- */
 
@@ -57,8 +44,6 @@
 .movie-bag {
     height: 88px;
     display: flex;
-    grid-gap: 4px;
-    align-items: center;
 }
 
 .img-movie-bag {
@@ -69,27 +54,18 @@
 }
 
 .info-bag {
+    width: 90%;
     display: flex;
     flex-direction: column;
     text-align: start;
-    grid-gap: 4px;
+    grid-gap: 8px;
 }
 
 .actions-bag {
     display: flex;
     grid-gap: 14px;
-    margin-left: auto;
 }
 
-.actions-bag svg {
+svg {
     border-radius: 50px;
-}
-
-.actions-bag svg:active {
-    background: #BFBFBF;
-}
-
-.actions-bag svg:hover {
-    background: #6B6B6B;
-    cursor: pointer;
 }

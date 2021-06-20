@@ -47,7 +47,7 @@ function Bag({ moviesInBasket, finalPrice, handleMovieAdd, handleMovieRemoval })
                             </>
                         )
                 }
-                {basketNotEmpty ? <PriceButton className='bag-button' text="Confirme seus dados" type="basket" price={finalPrice} /> : ''}
+                {basketNotEmpty ? <PriceButton className='bag-burron' text="Confirme seus dados" type="basket" price={finalPrice} /> : ''}
             </div>
         </div>
     );

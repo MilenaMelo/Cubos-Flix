@@ -31,7 +31,7 @@ function Bag({ moviesInBasket, finalPrice, handleMovieAdd, handleMovieRemoval })
                                         <span >{title}</span>
                                         <span >R$ {price.toString().replace('.', ',')}</span>
                                     </div>
-                                    <div className='actions-bag'>
+                                    <div>
                                         <PlusIcon onClick={() => handleMovieAdd(title)} />
                                         {count}
                                         {count > 1 ? <MinusIcon onClick={() => handleMovieRemoval(title)} /> : <TrashIcon onClick={() => handleMovieRemoval(title)} />}
@@ -47,7 +47,7 @@ function Bag({ moviesInBasket, finalPrice, handleMovieAdd, handleMovieRemoval })
                             </>
                         )
                 }
-                {basketNotEmpty ? <PriceButton className='bag-button' text="Confirme seus dados" type="basket" price={finalPrice} /> : ''}
+                {basketNotEmpty ? <PriceButton text="Confirme seus dados" type="basket" price={finalPrice} /> : ''}
             </div>
         </div>
     );

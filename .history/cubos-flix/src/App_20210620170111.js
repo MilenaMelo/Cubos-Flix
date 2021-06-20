@@ -1,4 +1,4 @@
-/* ---------------------- IMPORTS --------------------------- */
+/* ----------- IMPORT HOOKS ----------- */
 import React, { useState, useEffect } from "react";
 
 /* ----------- IMPORT PAGES ----------- */
@@ -13,14 +13,11 @@ import defaultMovies from './data/data.js';
 
 /* ---------------------- APPLICATION ----------------------- */
 function App() {
-
-  // --- states
   const [movies, setMovies] = useState(defaultMovies);
   const [moviesFilter, setMoviesFilter] = useState("");
   const [moviesInBag, setMoviesInBag] = useState([]);
   const [finalPrice, setFinalPrice] = useState(0);
 
-  // --- call API
   useEffect(() => {
     async function carregarFilmes() {
       const reponse = await fetch('https://tmdb-proxy-workers.vhfmag.workers.dev/3/discover/movie?language=pt-BR');
@@ -29,7 +26,7 @@ function App() {
 
       setMovies(results);
     }
-    // --- call
+
     carregarFilmes();
   }, []);
 

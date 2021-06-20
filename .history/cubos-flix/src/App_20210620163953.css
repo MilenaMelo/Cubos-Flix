@@ -13,7 +13,7 @@ body {
 
 /* ----------- APPLICATION ----------- */
 
-.App {
+.app {
     min-height: 100vh;
     display: grid;
     grid-template-areas: 'header header'
@@ -70,10 +70,10 @@ body {
 .side-content .button-movie {
     padding: 20px;
     font-size: 16px;
-    background: #E25EBF;
+    background: #E17B7B;
 }
 
 .side-content .button-movie:hover, 
 .side-content .button-movie:active {
-    background: #E17B7B;
+    background: #E25EBF;
 }

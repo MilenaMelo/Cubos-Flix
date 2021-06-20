@@ -58,6 +58,7 @@
     height: 88px;
     display: flex;
     grid-gap: 4px;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -78,18 +79,13 @@
 .actions-bag {
     display: flex;
     grid-gap: 14px;
-    margin-left: auto;
 }
 
-.actions-bag svg {
+svg {
     border-radius: 50px;
 }
 
-.actions-bag svg:active {
-    background: #BFBFBF;
-}
-
-.actions-bag svg:hover {
-    background: #6B6B6B;
-    cursor: pointer;
+.button-movie, .PriceButton {
+    margin: 0px;
+    align-items: center;
 }

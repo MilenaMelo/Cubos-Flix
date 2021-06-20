@@ -1,4 +1,4 @@
-/* ---------------------- IMPORTS --------------------------- */
+/* ----------- IMPORT HOOKS ----------- */
 import React, { useState, useEffect } from "react";
 
 /* ----------- IMPORT PAGES ----------- */
@@ -8,28 +8,25 @@ import Cards from './components/Cards';
 import Bag from './components/Bag';
 
 /* ----------- IMPORT VARIABLES ----------- */
-import defaultMovies from './data/data.js';
+import list_movies from './data/data.js';
 
 
 /* ---------------------- APPLICATION ----------------------- */
 function App() {
-
-  // --- states
-  const [movies, setMovies] = useState(defaultMovies);
+  const [movies, setMovies] = useState(list_movies);
   const [moviesFilter, setMoviesFilter] = useState("");
   const [moviesInBag, setMoviesInBag] = useState([]);
   const [finalPrice, setFinalPrice] = useState(0);
 
-  // --- call API
   useEffect(() => {
     async function carregarFilmes() {
-      const reponse = await fetch('https://tmdb-proxy-workers.vhfmag.workers.dev/3/discover/movie?language=pt-BR');
+      const resposta = await fetch('https://tmdb-proxy-workers.vhfmag.workers.dev/3/discover/movie?language=pt-BR');
 
-      const { results } = await reponse.json();
+      const { results } = await resposta.json();
 
       setMovies(results);
     }
-    // --- call
+
     carregarFilmes();
   }, []);
 

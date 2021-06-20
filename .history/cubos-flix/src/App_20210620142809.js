@@ -1,4 +1,4 @@
-/* ---------------------- IMPORTS --------------------------- */
+/* ----------- IMPORT STATES ----------- */
 import React, { useState, useEffect } from "react";
 
 /* ----------- IMPORT PAGES ----------- */
@@ -8,30 +8,16 @@ import Cards from './components/Cards';
 import Bag from './components/Bag';
 
 /* ----------- IMPORT VARIABLES ----------- */
-import defaultMovies from './data/data.js';
+import list_movies from './data/data.js';
 
 
 /* ---------------------- APPLICATION ----------------------- */
 function App() {
-
-  // --- states
-  const [movies, setMovies] = useState(defaultMovies);
+  const [movies] = useState(list_movies);
   const [moviesFilter, setMoviesFilter] = useState("");
-  const [moviesInBag, setMoviesInBag] = useState([]);
-  const [finalPrice, setFinalPrice] = useState(0);
+  const [moviesInBasket, setMoviesInBasket] = useState([]);
+  const [basketFinalPrice, setBasketFinalPrice] = useState(0);
 
-  // --- call API
-  useEffect(() => {
-    async function carregarFilmes() {
-      const reponse = await fetch('https://tmdb-proxy-workers.vhfmag.workers.dev/3/discover/movie?language=pt-BR');
-
-      const { results } = await reponse.json();
-
-      setMovies(results);
-    }
-    // --- call
-    carregarFilmes();
-  }, []);
 
   function filterMovie(movie) {
     if (!moviesFilter) return movie;
@@ -46,18 +32,18 @@ function App() {
   }
 
   function sendPurchase(movie) {
-    const newMovies = [...moviesInBag];
+    const newMovies = [...moviesInBasket];
     const movieInBasket = newMovies.find(
       ({ title }) => title === movie.title,
     );
 
     if (movieInBasket) {
       movieInBasket.count++;
-      setMoviesInBag(newMovies);
+      setMoviesInBasket(newMovies);
       const newPrice = getDiscountedPrice(
-        movieInBasket.price + finalPrice,
+        movieInBasket.price + basketFinalPrice,
       );
-      setFinalPrice(newPrice);
+      setBasketFinalPrice(newPrice);
       return;
     }
 
@@ -67,49 +53,35 @@ function App() {
       price: movie.price,
       count: 1,
     });
-    setMoviesInBag(newMovies);
-    const newPrice = getDiscountedPrice(movie.price + finalPrice);
-    setFinalPrice(newPrice);
-  }
-
-  function handleMovieAdd(movieTitle) {
-    const newMovies = [...moviesInBag];
-    const movieInBasket = newMovies.find(
-      ({ title }) => title === movieTitle,
-    );
-
-    movieInBasket.count++;
-    setMoviesInBag(newMovies);
-    const newPrice = getDiscountedPrice(
-      movieInBasket.price + finalPrice,
-    );
-    setFinalPrice(newPrice);
+    setMoviesInBasket(newMovies);
+    const newPrice = getDiscountedPrice(movie.price + basketFinalPrice);
+    setBasketFinalPrice(newPrice);
   }
 
   function handleMovieRemoval(movieTitle) {
-    const newMovies = [...moviesInBag];
+    const newMovies = [...moviesInBasket];
     const movieInBasket = newMovies.find(
       ({ title }) => title === movieTitle,
     );
     const newPrice = getDiscountedPrice(
-      finalPrice - movieInBasket.price,
+      basketFinalPrice - movieInBasket.price,
     );
-    setFinalPrice(newPrice);
+    setBasketFinalPrice(newPrice);
 
     movieInBasket.count--;
     if (movieInBasket.count === 0) {
-      setMoviesInBag(
+      setMoviesInBasket(
         newMovies.filter(({ title }) => title !== movieTitle),
       );
       return;
     }
 
-    setMoviesInBag(newMovies);
+    setMoviesInBasket(newMovies);
   }
 
 
   return (
-    <div className='App'>
+    <div className='app'>
       <header className='header'>
         <Navbar setMoviesFilter={setMoviesFilter} />
       </header>
@@ -132,9 +104,10 @@ function App() {
         </div>
       </section>
       <section className='side-content'>
-        <Bag className="bag-button"
-          moviesInBasket={moviesInBag}
-          finalPrice={finalPrice}
+        <Bag
+          className="bag"
+          moviesInBasket={moviesInBasket}
+          finalPrice={basketFinalPrice}
           handleMovieAdd={handleMovieAdd}
           handleMovieRemoval={handleMovieRemoval}
         />
