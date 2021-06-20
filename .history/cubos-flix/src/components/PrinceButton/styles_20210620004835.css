@@ -1,0 +1,19 @@
+/* ----------- BUTTON INFO ----------- */
+
+.button-movie {
+    padding: 9px 8px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+    background: #996CF4;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 6px;
+}
+
+.button-movie:hover {
+    cursor: pointer;
+    background: #593F8F;
+    transition: .5s;
+}

@@ -7,7 +7,6 @@
     flex-direction: column;
     box-shadow: 0 4px 4px 0 rgb(0 0 0 / 40%);
     border-radius: 10px;
-    background: linear-gradient(rgba(0, 0, 0, 0.3) 100%, rgba(0, 0, 0, 0.3) 100%), url(https://image.tmdb.org/t/p/original/AoWY1gkcNzabh229Icboa1Ff0BM.jpg) center center / cover no-repeat;
 }
 
 .card-container:hover {
@@ -26,6 +25,7 @@
 
 .name-movie {
     margin-bottom: 6px;
+    width: 100px;
 }
 
 /* ----------- BUTTON INFO ----------- */
